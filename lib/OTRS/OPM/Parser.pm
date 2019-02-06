@@ -2,7 +2,7 @@ package OTRS::OPM::Parser;
 
 # ABSTRACT: Parser for the .opm file
 
-our $VERSION = 1.00;
+our $VERSION = 1.01;
 
 use Moo;
 use MooX::HandlesVia;
@@ -76,10 +76,11 @@ sub documentation {
     my $doc_file;
     my $found_file;
     
-    my $lang = $params{lang} || '';
+    my $lang = $params{lang} || 'en';
     my $type = $params{type} || '';
 
     for my $file ( @{ $self->files } ) {
+
         my $filename = $file->{filename};
         next if $filename !~ m{ \A doc/ }x;
         
