@@ -38,7 +38,7 @@ my $object = OTRS::OPM::Parser->new(
 
 $object->parse;
 
-for my $file ( $object->files ) {
+for my $file ( @{ $object->files } ) {
     print "create $file->{filename}...\n";
     my $full_path = File::Spec->catfile( $out_dir, $file->{filename} );
     my $dir       = dirname( $full_path );
