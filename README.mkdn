@@ -1,0 +1,117 @@
+[![Build Status](https://travis-ci.org/reneeb/OTRS-OPM-Parser.svg?branch=master)](https://travis-ci.org/reneeb/OTRS-OPM-Parser)
+[![Kwalitee status](http://cpants.cpanauthors.org/dist/OTRS-OPM-Parser.png)](http://cpants.charsbar.org/dist/overview/OTRS-OPM-Parser)
+[![GitHub issues](https://img.shields.io/github/issues/reneeb/OTRS-OPM-Parser.svg)](https://github.com/reneeb/OTRS-OPM-Parser/issues)
+
+# NAME
+
+OTRS::OPM::Parser - Parser for the .opm file
+
+# VERSION
+
+version 1
+
+# SYNOPSIS
+
+    use OTRS::OPM::Parser;
+    
+    my $opm_file = 'QuickMerge-3.3.2.opm';
+    my $opm      = OTRS::OPM::Parser->new( opm_file => $opm_file );
+    
+    say sprintf "This is version %s of package %s",
+        $opm->version,
+        $opm->name;
+    
+    say "You can install it on those OTRS versions: ", join ", ", @{ $opm->framework };
+    
+    say "Dependencies: ";
+    for my $dep ( @{ $opm->dependencies } ) {
+        say sprintf "%s (%s) - (%s)", 
+            $dep->{name},
+            $dep->{version},
+            $dep->{type};
+    }
+
+# METHODS
+
+## new
+
+## parse
+
+## as\_sopm
+
+## documentation
+
+## validate
+
+# ATTRIBUTES
+
+- opm\_file
+- tree
+- framework
+- dependencies
+- files
+- error\_string
+- description
+- license
+- url
+- vendor
+- version
+- name
+
+
+
+# Development
+
+The distribution is contained in a Git repository, so simply clone the
+repository
+
+```
+$ git clone http://github.com/reneeb/OTRS-OPM-Parser.git
+```
+
+and change into the newly-created directory.
+
+```
+$ cd OTRS-OPM-Parser
+```
+
+The project uses [`Dist::Zilla`](https://metacpan.org/pod/Dist::Zilla) to
+build the distribution, hence this will need to be installed before
+continuing:
+
+```
+$ cpanm Dist::Zilla
+```
+
+To install the required prequisite packages, run the following set of
+commands:
+
+```
+$ dzil authordeps --missing | cpanm
+$ dzil listdeps --author --missing | cpanm
+```
+
+The distribution can be tested like so:
+
+```
+$ dzil test
+```
+
+To run the full set of tests (including author and release-process tests),
+add the `--author` and `--release` options:
+
+```
+$ dzil test --author --release
+```
+
+# AUTHOR
+
+Renee Baecker <reneeb@cpan.org>
+
+# COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2016 by Renee Baecker.
+
+This is free software, licensed under:
+
+    The Artistic License 2.0 (GPL Compatible)
