@@ -294,8 +294,6 @@ sub as_sopm {
     return $tree->toString;
 }
 
-no Moose;
-
 =head1 SYNOPSIS
 
     use OTRS::OPM::Parser;
