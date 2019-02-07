@@ -89,23 +89,21 @@ sub documentation {
             $found_file = $filename;
         }
         
-        next if $lang && $filename !~ m{ \A doc/$lang/ }x;
+        next if $filename !~ m{ \A doc/$lang/ }x;
         
-        if ( $lang && $found_file !~ m{ \A doc/$lang/ }x ) {
+        if ( $found_file !~ m{ \A doc/$lang/ }x ) {
             $doc_file   = $file;
             $found_file = $filename;
         }
         
         next if $type && $filename !~ m{ \A doc/[^/]+/.*\.$type \z }x;
         
-        if ( $type && $found_file !~ m{ \A doc/$lang/ }x ) {
+        if ( $type && $found_file !~ m{ \A doc/[^/]+/.*\.$type \z }x ) {
             $doc_file   = $file;
             $found_file = $filename;
-            
-            if ( !$lang || ( $lang && $found_file !~ m{ \A doc/$lang/ }x ) ) {                
-                last;
-            }
         }
+
+        last if $found_file =~ m{ \A doc/$lang/.*\.$type \z }x;
     }
     
     return $doc_file;
