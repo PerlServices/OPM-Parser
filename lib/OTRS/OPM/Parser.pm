@@ -2,7 +2,7 @@ package OTRS::OPM::Parser;
 
 # ABSTRACT: Parser for the .opm file
 
-our $VERSION = 1.01;
+our $VERSION = 1.02;
 
 use Moo;
 use MooX::HandlesVia;
