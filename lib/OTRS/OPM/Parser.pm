@@ -298,6 +298,7 @@ sub as_sopm {
     
     my $opm_file = 'QuickMerge-3.3.2.opm';
     my $opm      = OTRS::OPM::Parser->new( opm_file => $opm_file );
+    $opm->parse or die "OPM parse failed: ", $opm->error_string;
     
     say sprintf "This is version %s of package %s",
         $opm->version,
