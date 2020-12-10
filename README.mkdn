@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/reneeb/OTRS-OPM-Parser.svg?branch=master)](https://travis-ci.org/reneeb/OTRS-OPM-Parser)
-[![Kwalitee status](http://cpants.cpanauthors.org/dist/OTRS-OPM-Parser.png)](http://cpants.charsbar.org/dist/overview/OTRS-OPM-Parser)
+[![Kwalitee status](http://cpants.cpanauthors.org/dist/OTRS-OPM-Parser.png)](https://cpants.cpanauthors.org/dist/OTRS-OPM-Parser)
 [![GitHub issues](https://img.shields.io/github/issues/reneeb/OTRS-OPM-Parser.svg)](https://github.com/reneeb/OTRS-OPM-Parser/issues)
 
 # NAME
@@ -8,7 +8,7 @@ OTRS::OPM::Parser - Parser for the .opm file
 
 # VERSION
 
-version 1.02
+version 1.03
 
 # SYNOPSIS
 
