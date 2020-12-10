@@ -1,6 +1,10 @@
 Change history for OTRS::OPM::Parser
 ====================================
 
+1.04 2020-12-10 11:59:00
+
+  + fix built
+
 1.03 2020-12-10 11:54:00
 
   + improved SYNOPSIS (thanks to Håkon Hægland (@hakonhagland), PR#4)
