@@ -3,6 +3,8 @@
     <CVS>$Id: QuickMerge.sopm,v 1.1.1.1 2011/04/15 07:49:58 rb Exp $</CVS>
     <Name>QuickMerge</Name>
     <Version>3.3.2</Version>
+    <Description Lang="en">A module to merge tickets more quickly.</Description>
+    <Description Lang="de">Ein Modul, mit dem Tickets schneller/einfacher zusammengefasst werden können.</Description>
     <Framework Maximum="3.2.8" Minimum="3.2.1">3.2.x</Framework>
     <Framework Maximum="3.3.12">3.3.x</Framework>
     <Framework Minimum="4.0.2">4.x.x</Framework>
@@ -10,8 +12,6 @@
     <Vendor>Perl-Services.de</Vendor>
     <URL>http://www.perl-services.de/</URL>
     <License>GNU AFFERO GENERAL PUBLIC LICENSE Version 3, November 2007</License>
-    <Description Lang="en">A module to merge tickets more quickly.</Description>
-    <Description Lang="de">Ein Modul, mit dem Tickets schneller/einfacher zusammengefasst werden können.</Description>
     <PackageRequired Version="0.0.1">TestPackage</PackageRequired>
     <PackageRequired Version="1.2.4">LocalPackage</PackageRequired>
     <ModuleRequired Version="4.32">Mojolicious</ModuleRequired>
@@ -105,4 +105,4 @@ LCBhbiBBSkFYIGNhbGwgaXMgc2VudCB0byBtZXJnZSBhbGwgdGlja2V0cyBpbnRvIHRoZSBvbGRl
 c3Qgc2VsZWN0ZWQgdGlja2V0LgoK
 </File>
     </Filelist>
-<BuildHost>2013-11-05 10:08:54</BuildHost><BuildHost>lvps83-169-20-244.dedicated.hosteurope.de</BuildHost></otobo_package>
+<BuildDate>2013-11-05 10:08:54</BuildDate><BuildHost>lvps83-169-20-244.dedicated.hosteurope.de</BuildHost></otobo_package>
