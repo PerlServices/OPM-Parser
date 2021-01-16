@@ -16,7 +16,7 @@ requires "Type::Tiny" => "1";
 requires "Type::Utils" => "1";
 requires "Types::Standard" => "1";
 requires "XML::LibXML" => "0";
-requires "perl" => "5.010";
+requires "perl" => "5.020";
 
 on 'test' => sub {
     requires "Test::More" => "0";
