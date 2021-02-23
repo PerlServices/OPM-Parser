@@ -133,7 +133,7 @@ sub validate {
 }
 
 sub parse {
-    my ($self) = @_;
+    my ($self, %params) = @_;
 
     $self->error_string( '' );
     
@@ -157,7 +157,9 @@ sub parse {
     return if $self->error_string;
     
     my $is_valid = $self->validate;
-    return if !$is_valid;
+    if ( !$params{ignore_validation} && !$is_valid ) {
+        return;
+    }
     
     my $root = $tree->getDocumentElement;
     
@@ -305,6 +307,20 @@ sub as_sopm {
 =head2 new
 
 =head2 parse
+
+Validates and parses the I<.opm> file. It returns C<1> on success and C<undef> on error.
+If an error occurs, one can get the error message with C<error_string>:
+
+    my $opm_file = 'QuickMerge-3.3.2.opm';
+    my $opm      = OTRS::OPM::Parser->new( opm_file => $opm_file );
+    $opm->parse or die "OPM parse failed: ", $opm->error_string;
+
+If you want to ignore validation result, you can pass C<< ignore_validation => 1 >>:
+
+    my $opm_file = 'QuickMerge-3.3.2.opm';
+    my $opm      = OTRS::OPM::Parser->new( opm_file => $opm_file );
+    $opm->parse( ignore_validation => 1 )
+        or die "OPM parse failed: ", $opm->error_string;
 
 =head2 as_sopm
 

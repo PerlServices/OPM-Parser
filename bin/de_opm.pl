@@ -12,9 +12,13 @@ use File::Path qw(make_path);
 use File::Spec;
 use File::Temp;
 use FindBin;
+use Getopt::Long;
 
-use lib $FindBin::Bin . '/../lib';
 use OTRS::OPM::Parser;
+
+GetOptions(
+    'ignore-validation' => \my $ignore_validation,
+);
 
 my $location = $ARGV[0];
 my $out_dir  = $ARGV[1];
@@ -36,7 +40,8 @@ my $object = OTRS::OPM::Parser->new(
     opm_file => $location,
 );
 
-$object->parse;
+$object->parse( ignore_validation => $ignore_validation )
+    or die $object->error_string;
 
 for my $file ( @{ $object->files } ) {
     print "create $file->{filename}...\n";
