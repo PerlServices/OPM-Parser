@@ -5,15 +5,15 @@ use warnings;
 
 use Test::More;
 
-use OTRS::OPM::Parser;
+use OPM::Parser;
 
 use File::Basename;
 use File::Spec;
 
 my $opm_file = File::Spec->catfile( dirname(__FILE__), 'data', 'QuickMerge-3.3.2.opm' );
-my $opm      = OTRS::OPM::Parser->new( opm_file => $opm_file );
+my $opm      = OPM::Parser->new( opm_file => $opm_file );
 
-isa_ok $opm, 'OTRS::OPM::Parser';
+isa_ok $opm, 'OPM::Parser';
 
 $opm->parse;
 
@@ -46,8 +46,8 @@ is_deeply $opm->framework, [qw/
 /], 'framework';
 
 is_deeply $opm->dependencies, [
-    { type => 'OTRS', version => '0.0.1', name => 'TestPackage' },
-    { type => 'OTRS', version => '1.2.4', name => 'LocalPackage' },
+    { type => 'Addon', version => '0.0.1', name => 'TestPackage' },
+    { type => 'Addon', version => '1.2.4', name => 'LocalPackage' },
     { type => 'CPAN', version => '4.32', name => 'Mojolicious' },
 ], 'dependencies';
 

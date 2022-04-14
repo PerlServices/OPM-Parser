@@ -1,11 +1,13 @@
-package OTRS::OPM::Parser::Types;
+package OPM::Parser::Types;
 
-# ABSTRACT: types for OTRS::OPM::Parser
+# ABSTRACT: types for OPM::Parser
 
-use v5.10;
+use v5.24;
 
 use strict;
 use warnings;
+
+# VERSION
 
 use Type::Library
    -base,
@@ -13,8 +15,6 @@ use Type::Library
 
 use Type::Utils -all;
 use Types::Standard -types;
-
-our $VERSION = '0.01';
 
 Type::Utils::extends('Types::Standard');
 

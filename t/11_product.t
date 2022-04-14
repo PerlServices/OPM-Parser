@@ -5,7 +5,7 @@ use warnings;
 
 use Test::More;
 
-use OTRS::OPM::Parser;
+use OPM::Parser;
 
 use File::Basename;
 use File::Spec;
@@ -18,9 +18,9 @@ my %files = (
 for my $file ( sort keys %files ) {
 
     my $opm_file = File::Spec->catfile( dirname(__FILE__), 'data', $file );
-    my $opm      = OTRS::OPM::Parser->new( opm_file => $opm_file );
+    my $opm      = OPM::Parser->new( opm_file => $opm_file );
 
-    isa_ok $opm, 'OTRS::OPM::Parser';
+    isa_ok $opm, 'OPM::Parser';
 
     $opm->parse;
 

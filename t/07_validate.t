@@ -5,16 +5,16 @@ use warnings;
 
 use Test::More;
 
-use OTRS::OPM::Parser;
+use OPM::Parser;
 
 use File::Basename;
 use File::Spec;
 
 {
     my $opm_file = File::Spec->catfile( dirname(__FILE__), 'data', 'NotThere-3.3.2.opm' );
-    my $opm      = OTRS::OPM::Parser->new( opm_file => $opm_file );
+    my $opm      = OPM::Parser->new( opm_file => $opm_file );
 
-    isa_ok $opm, 'OTRS::OPM::Parser';
+    isa_ok $opm, 'OPM::Parser';
 
     my $success = $opm->validate;
 
@@ -24,9 +24,9 @@ use File::Spec;
 
 {
     my $opm_file = File::Spec->catfile( dirname(__FILE__), 'data', 'QuickMergeInvalid-3.3.2.opm' );
-    my $opm      = OTRS::OPM::Parser->new( opm_file => $opm_file );
+    my $opm      = OPM::Parser->new( opm_file => $opm_file );
 
-    isa_ok $opm, 'OTRS::OPM::Parser';
+    isa_ok $opm, 'OPM::Parser';
 
     my $success = $opm->validate;
 
@@ -36,9 +36,9 @@ use File::Spec;
 
 {
     my $opm_file = File::Spec->catfile( dirname(__FILE__), 'data', 'QuickMergeInvalid-3.3.3.opm' );
-    my $opm      = OTRS::OPM::Parser->new( opm_file => $opm_file );
+    my $opm      = OPM::Parser->new( opm_file => $opm_file );
 
-    isa_ok $opm, 'OTRS::OPM::Parser';
+    isa_ok $opm, 'OPM::Parser';
 
     my $success = $opm->validate;
 
@@ -48,9 +48,9 @@ use File::Spec;
 
 {
     my $opm_file = File::Spec->catfile( dirname(__FILE__), 'data', 'QuickMergeInvalid-3.3.4.opm' );
-    my $opm      = OTRS::OPM::Parser->new( opm_file => $opm_file );
+    my $opm      = OPM::Parser->new( opm_file => $opm_file );
 
-    isa_ok $opm, 'OTRS::OPM::Parser';
+    isa_ok $opm, 'OPM::Parser';
 
     my $success = $opm->validate;
 
@@ -61,9 +61,9 @@ use File::Spec;
 
 {
     my $opm_file = File::Spec->catfile( dirname(__FILE__), 'data', 'QuickMerge-4.0.3.opm' );
-    my $opm      = OTRS::OPM::Parser->new( opm_file => $opm_file );
+    my $opm      = OPM::Parser->new( opm_file => $opm_file );
 
-    isa_ok $opm, 'OTRS::OPM::Parser';
+    isa_ok $opm, 'OPM::Parser';
 
     my $success = $opm->validate;
 
@@ -73,9 +73,9 @@ use File::Spec;
 
 {
     my $opm_file = File::Spec->catfile( dirname(__FILE__), 'data', 'ProductNews-6.0.5.opm' );
-    my $opm      = OTRS::OPM::Parser->new( opm_file => $opm_file );
+    my $opm      = OPM::Parser->new( opm_file => $opm_file );
 
-    isa_ok $opm, 'OTRS::OPM::Parser';
+    isa_ok $opm, 'OPM::Parser';
 
     my $success = $opm->validate;
 

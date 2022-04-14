@@ -1,13 +1,20 @@
-package OTRS::OPM::Parser;
+package OPM::Parser;
+
+use v5.24;
 
 # ABSTRACT: Parser for the .opm file
 
+use strict;
+use warnings;
+
+# VERSION
+
 use Moo;
 use MooX::HandlesVia;
-use OTRS::OPM::Parser::Types qw(:all);
+use OPM::Parser::Types qw(:all);
 
 use MIME::Base64 ();
-use OTRS::OPM::Validate;
+use OPM::Validate;
 use Path::Class;
 use Try::Tiny;
 use XML::LibXML;
@@ -79,7 +86,7 @@ sub documentation {
     my $lang = $params{lang} || 'en';
     my $type = $params{type} || '';
 
-    for my $file ( @{ $self->files } ) {
+    for my $file ( $self->files->@* ) {
 
         my $filename = $file->{filename};
         next if $filename !~ m{ \A doc/ }x;
@@ -122,7 +129,7 @@ sub validate {
     try {
         my $fh      = IO::File->new( $self->opm_file, 'r' );
         my $content = join '', $fh->getlines;
-        OTRS::OPM::Validate->validate( $content );
+        OPM::Validate->validate( $content );
     }
     catch {
         $self->error_string( 'opm file is invalid: ' . $_ );
@@ -229,16 +236,16 @@ sub parse {
     
     $self->description( $description_string );
     
-    # get OTRS and CPAN dependencies
-    my @otrs_deps = $root->findnodes( 'PackageRequired' );
-    my @cpan_deps = $root->findnodes( 'ModuleRequired' );
+    # get Addon and CPAN dependencies
+    my @addon_deps = $root->findnodes( 'PackageRequired' );
+    my @cpan_deps  = $root->findnodes( 'ModuleRequired' );
     
     my %types     = (
-        PackageRequired => 'OTRS',
+        PackageRequired => 'Addon',
         ModuleRequired  => 'CPAN',
     );
     
-    for my $dep ( @otrs_deps, @cpan_deps ) {
+    for my $dep ( @addon_deps, @cpan_deps ) {
         my $node_type = $dep->nodeName;
         my $version   = $dep->findvalue( '@Version' );
         my $dep_name  = $dep->textContent;
@@ -282,17 +289,17 @@ sub as_sopm {
 
 =head1 SYNOPSIS
 
-    use OTRS::OPM::Parser;
+    use OPM::Parser;
     
     my $opm_file = 'QuickMerge-3.3.2.opm';
-    my $opm      = OTRS::OPM::Parser->new( opm_file => $opm_file );
+    my $opm      = OPM::Parser->new( opm_file => $opm_file );
     $opm->parse or die "OPM parse failed: ", $opm->error_string;
     
     say sprintf "This is version %s of package %s",
         $opm->version,
         $opm->name;
     
-    say "You can install it on those OTRS versions: ", join ", ", @{ $opm->framework };
+    say "You can install it on those framework versions: ", join ", ", @{ $opm->framework };
     
     say "Dependencies: ";
     for my $dep ( @{ $opm->dependencies } ) {
@@ -312,13 +319,13 @@ Validates and parses the I<.opm> file. It returns C<1> on success and C<undef> o
 If an error occurs, one can get the error message with C<error_string>:
 
     my $opm_file = 'QuickMerge-3.3.2.opm';
-    my $opm      = OTRS::OPM::Parser->new( opm_file => $opm_file );
+    my $opm      = OPM::Parser->new( opm_file => $opm_file );
     $opm->parse or die "OPM parse failed: ", $opm->error_string;
 
 If you want to ignore validation result, you can pass C<< ignore_validation => 1 >>:
 
     my $opm_file = 'QuickMerge-3.3.2.opm';
-    my $opm      = OTRS::OPM::Parser->new( opm_file => $opm_file );
+    my $opm      = OPM::Parser->new( opm_file => $opm_file );
     $opm->parse( ignore_validation => 1 )
         or die "OPM parse failed: ", $opm->error_string;
 

@@ -5,13 +5,13 @@ The distribution is contained in a Git repository, so simply clone the
 repository
 
 ```
-$ git clone http://github.com/reneeb/OTRS-OPM-Parser.git
+$ git clone git://github.com/perlservices/OPM-Parser.git
 ```
 
 and change into the newly-created directory.
 
 ```
-$ cd OTRS-OPM-Parser
+$ cd OPM-Parser
 ```
 
 The project uses [`Dist::Zilla`](https://metacpan.org/pod/Dist::Zilla) to

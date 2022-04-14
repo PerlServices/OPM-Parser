@@ -1,5 +1,10 @@
-Change history for OTRS::OPM::Parser
-====================================
+Change history for OPM::Parser
+==============================
+
+{NEXT}
+
+  * add flag for de_opm.pl to ignore validation results when parsing an opm file
+  * initial release after rename
 
 1.05 2021-01-16 08:34:00
 

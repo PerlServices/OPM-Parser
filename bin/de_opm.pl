@@ -6,6 +6,8 @@
 use strict;
 use warnings;
 
+# VERSION
+
 use LWP::Simple qw(getstore);
 use File::Basename;
 use File::Path qw(make_path);
@@ -14,7 +16,7 @@ use File::Temp;
 use FindBin;
 use Getopt::Long;
 
-use OTRS::OPM::Parser;
+use OPM::Parser;
 
 GetOptions(
     'ignore-validation' => \my $ignore_validation,
@@ -36,7 +38,7 @@ if ( !-f $location ) {
     die "Usage: $0 <location> <output_directory>";
 }
 
-my $object = OTRS::OPM::Parser->new(
+my $object = OPM::Parser->new(
     opm_file => $location,
 );
 
